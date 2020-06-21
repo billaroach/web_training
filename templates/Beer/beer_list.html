@@ -1,0 +1,25 @@
+{% extends "Beer/wrapper.html" %}
+
+{% block content %}
+
+    {% if 'black_beer/' in request.path %}
+
+        <h1>Темное пиво</h1>
+
+        {% elif 'light_beer/' in request.path %}
+
+        <h1>Светлое пиво</h1>
+
+        {% elif 'all_beer/' in request.path %}
+
+        <h1>Пиво разных сортов</h1>
+
+    {% endif %}
+
+        {% for beer in beers %}
+            <ul>
+                <li style="font-size: x-large"> <a href="/all_beer/{{ beer.id }}">{{ beer.mark }} - {{ beer.color }}, {{ beer.strength }}%</a> </li>
+            </ul>
+        {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "Beer/wrapper.html" %}
+
+{% block content %}
+
+    <h1>Добавить статью</h1>
+
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="button" value="Добавить статью">
+
+    </form>
+
+{% endblock %}

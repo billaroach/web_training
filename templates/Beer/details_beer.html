@@ -1,0 +1,34 @@
+{% extends "Beer/wrapper.html" %}
+
+{% block content %}
+
+    <h1>{{ beer.mark }}</h1>
+
+    <p1>Цвет: </p1> <p2>{{ beer.color }}</p2><br/>
+    <p1>Крепость: </p1> <p2>{{ beer.strength }}%</p2><br/>
+    <p1>Стиль: </p1> <p2>{{ beer.style }}</p2><br/>
+    <p1>Страна происхождения: </p1> <p2>{{ beer.country }}</p2><br/>
+    <p1>Описание: </p1> <p2>{{ beer.info }}</p2><br/>
+    <p1>Автор статьи: </p1> <p2>{{ beer.author }}</p2><br/>
+
+    <h3>Комментарии:</h3>
+
+    {% for comment in comments %}
+        <p>
+            <h4>{{ comment.comments_name }}</h4>
+            <h5>{{ comment.comments_text }}</h5>
+        </p>
+
+    {% endfor %}
+
+    <form action="/add_comment/{{ beer.id }}" method="post">
+
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="button" value="Добавить комментарий">
+
+    </form>
+
+
+
+{% endblock %}
